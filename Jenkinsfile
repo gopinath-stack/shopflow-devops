@@ -1,9 +1,3 @@
-- any agent
-- Stage 'Install' → pip install from requirements.txt
-- Stage 'Test'    → pytest + write report to test-reports.xml
-- post always     → junit report, then cleanWs
-⭐ options → timestamps
-⭐ post failure → echo 'Tests failed! Do not deploy!'
 
 pipeline {
     agent any 
