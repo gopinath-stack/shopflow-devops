@@ -22,6 +22,12 @@ pipeline {
                 bat "docker build -t shopflow-test:${env.BUILD_NUMBER} ."
             }
         }
+
+        stage('Run build') {
+            steps {
+                bat "docker run -d --name shopflow-test-container -p 5000:5000 shopflow-test:${env.BUILD_NUMBER}"
+            }
+        }
      }
 
      post {
