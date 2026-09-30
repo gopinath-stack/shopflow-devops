@@ -9,7 +9,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'python -m pytest'
+                bat 'python -m pytest --junitxml=test-report.xml'
             }
         }
     }
