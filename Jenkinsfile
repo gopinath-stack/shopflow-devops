@@ -28,6 +28,13 @@ pipeline {
                 bat "docker run -d --name shopflow-test-container -p 5000:5000 shopflow-test:${env.BUILD_NUMBER}"
             }
         }
+
+        stage('smkoe test') {
+            steps {
+                sleep 5
+                bat 'curl -f http://localhost:5000/health'
+            }
+        }
      }
 
      post {
