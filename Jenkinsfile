@@ -5,6 +5,11 @@ pipeline {
     options {
         timestamps()
     }
+
+    environment {
+        container = 'shopflow-app-container'
+    }
+
      stages {
         stage('Install') {
             steps {
@@ -25,7 +30,7 @@ pipeline {
 
         stage('Run build') {
             steps {
-                bat "docker run -d --name shopflow-test-container -p 5000:5000 shopflow-test:${env.BUILD_NUMBER}"
+                bat "docker run -d --name %container% -p 5000:5000 shopflow-test:${env.BUILD_NUMBER}"
             }
         }
 
@@ -40,7 +45,7 @@ pipeline {
      post {
         always{
             junit 'test-reports.xml'
-            bat 'docker rm -f shop-test-container || exit 0'
+            bat 'docker rm -f %container% || exit 0'
             cleanWs()
         }
      }
