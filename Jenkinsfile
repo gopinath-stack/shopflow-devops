@@ -1,12 +1,9 @@
 pipeline {
-
-    agent any
-
+    agent any 
     stages {
-        stage('Hello') {
+        stage('Install') {
             steps {
-                echo 'hi this file from vscode via jenkins scam script'
-                bat 'dir'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
     }
