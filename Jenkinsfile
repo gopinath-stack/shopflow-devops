@@ -40,6 +40,7 @@ pipeline {
      post {
         always{
             junit 'test-reports.xml'
+            bat 'docker rm -f shop-test-container || exit 0'
             cleanWs()
         }
      }
